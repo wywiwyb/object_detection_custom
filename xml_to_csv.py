@@ -32,6 +32,10 @@ def xml_to_csv(path):
         tree = ET.parse(xml_file)
         root = tree.getroot()
         for member in root.findall("object"):
+			if member[0].text == 1:
+				member[0].text = "car"
+			else:
+				member[0].text = "pool"
             classes_names.append(member[0].text)
             value = (
                 root.find("filename").text,
